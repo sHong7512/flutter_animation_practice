@@ -30,9 +30,7 @@ class _AnimatedOpacityScreenState extends State<AnimatedOpacityScreen> {
             child: AnimatedOpacity(
               opacity: selected ? 0.0 : 1.0,
               duration: Duration(milliseconds: 500),
-              child: FlutterLogo(
-                size: 60,
-              ),
+              child: FlutterLogo(size: 60),
             ),
           ),
         ),

@@ -35,26 +35,74 @@ class _AnimatedBuilderScreenState extends State<AnimatedBuilderScreen>
       appBar: AppBar(
         title: Text('Test AnimatedBuilder'),
       ),
-      body: Center(
-        child: AnimatedBuilder(
-          animation: _controller,
-          child: Container(
-            width: 200.0,
-            height: 200.0,
-            color: Colors.green,
-            child: const Center(
-              child: Text(
-                'Whee!',
-                style: TextStyle(fontSize: 50),
+      body: Container(
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedBuilder(
+              animation: _controller,
+              child: Container(
+                width: 100.0,
+                height: 100.0,
+                color: Colors.green,
+                child: const Center(
+                  child: Text(
+                    'rotate',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
               ),
+              builder: (BuildContext context, Widget? child) {
+                return Transform.rotate(
+                  angle: _controller.value * 2.0 * math.pi,
+                  child: child,
+                );
+              },
             ),
-          ),
-          builder: (BuildContext context, Widget? child) {
-            return Transform.rotate(
-              angle: _controller.value * 2.0 * math.pi,
-              child: child,
-            );
-          },
+            const SizedBox(height: 30,),
+            AnimatedBuilder(
+              animation: _controller,
+              child: Container(
+                width: 100.0,
+                height: 100.0,
+                color: Colors.green,
+                child: const Center(
+                  child: Text(
+                    'scale',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+              builder: (BuildContext context, Widget? child) {
+                return Transform.scale(
+                  scale: _controller.value * 3,
+                  child: child,
+                );
+              },
+            ),
+            const SizedBox(height: 30,),
+            AnimatedBuilder(
+              animation: _controller,
+              child: Container(
+                width: 100.0,
+                height: 100.0,
+                color: Colors.green,
+                child: const Center(
+                  child: Text(
+                    'translate',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+              builder: (BuildContext context, Widget? child) {
+                return Transform.translate(
+                  offset: Offset(0, _controller.value * 600),
+                  child: child,
+                );
+              },
+            ),
+          ],
         ),
       ),
     );
