@@ -30,12 +30,12 @@ class _AnimatedPositionedDirectionalScreenState
             child: AnimatedSize(
               duration: const Duration(milliseconds: 500),
               curve: Curves.fastOutSlowIn,
+              // vsync: this,
               child: Container(
                 width: selected ? 300 : 200,
                 height: selected ? 160 : 200,
                 color: Colors.blue,
               ),
-              vsync: this,
             ),
           ),
         ),
